@@ -4,7 +4,33 @@
              x:Class="AmmyUIExmaple.App">
 	<Application.Resources>
 
-		<!-- Application resource dictionary -->
+        <ResourceDictionary>
+            <Color x:Key="EntryCategoryColorBug" x:FactoryMethod="FromHex">
+                <x:Arguments>
+                    <x:String>#F44336</x:String>
+                </x:Arguments>
+            </Color>
+
+            <Color x:Key="EntryCategoryColorFeature" x:FactoryMethod="FromHex">
+                <x:Arguments>
+                    <x:String>#3F51B5</x:String>
+                </x:Arguments>
+            </Color>
+
+            <Color x:Key="EntryCategoryColorCosmetic" x:FactoryMethod="FromHex">
+                <x:Arguments>
+                    <x:String>#FFC107</x:String>
+                </x:Arguments>
+            </Color>
+
+            <Color x:Key="EntryCategoryColorAnalytic" x:FactoryMethod="FromHex">
+                <x:Arguments>
+                    <x:String>#4CAF50</x:String>
+                </x:Arguments>
+            </Color>
+
+            <x:Double x:Key="IssuesFontSize">18</x:Double>
+        </ResourceDictionary>
 
 	</Application.Resources>
 </Application>

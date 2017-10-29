@@ -1,0 +1,51 @@
+<ContentPage x:Class="AmmyUIExmaple.MainPage" xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:ns0="clr-namespace:AmmySidekick;assembly=AmmySidekick" BackgroundColor="#7C4DFF" Padding="18" ns0:Ammy.Register="/AmmyUIExmaple;component/MainPage.g.xaml">
+  <StackLayout>
+    <Label Text="Hello, Amy!" TextColor="White" FontSize="24" FontAttributes="Bold"/>
+    <BoxView HeightRequest="1" WidthRequest="200" HorizontalOptions="Start" BackgroundColor="#66ffffff"/>
+    <Label TextColor="White">
+      <Label.FormattedText>
+        <FormattedString>
+          <FormattedString.Spans>
+            <Span Text="There are "/>
+            <Span Text="4" FontAttributes="Bold" FontSize="{StaticResource IssuesFontSize}"/>
+            <Span Text=" issues awaiting your action."/>
+          </FormattedString.Spans>
+        </FormattedString>
+      </Label.FormattedText>
+    </Label>
+    <ListView RowHeight="70" SeparatorVisibility="None">
+      <ListView.ItemsSource>
+        <Binding Path="ListItems"/>
+      </ListView.ItemsSource>
+      <ListView.ItemTemplate>
+        <DataTemplate>
+          <ViewCell>
+            <Frame BackgroundColor="#33eeeeee" CornerRadius="10" HasShadow="False" Padding="10" Margin="0, 10">
+              <Grid>
+                <Grid.ColumnDefinitions>
+                  <ColumnDefinition Width="*"/>
+                  <ColumnDefinition Width="24"/>
+                </Grid.ColumnDefinitions>
+                <Label Grid.Row="0" Grid.Column="0" TextColor="#ffffff" FontSize="16">
+                  <Label.Text>
+                    <Binding Path="Title"/>
+                  </Label.Text>
+                </Label>
+                <Frame WidthRequest="50" HeightRequest="4" Padding="0" HasShadow="False" CornerRadius="2" VerticalOptions="End" HorizontalOptions="Start">
+                  <Frame.BackgroundColor>
+                    <Binding Path="Category" Converter="{x:Static ns0:ExpressionConverter.Instance}" ConverterParameter="&lt;expr id=&quot;0&quot;&gt;&lt;lambda isaction=&quot;False&quot;&gt;&lt;staticcall method=&quot;Convert&quot;&gt;&lt;typeinfo typename=&quot;AmmyUIExmaple.Converters.EntryCategoryToColorConverter&quot; isarray=&quot;False&quot;&gt;&lt;/typeinfo&gt;&lt;parameter name=&quot;category&quot; type=&quot;AmmyUIExmaple.EntryCategory&quot; /&gt;&lt;/staticcall&gt;&lt;parameter name=&quot;category&quot; type=&quot;AmmyUIExmaple.EntryCategory&quot; /&gt;&lt;/lambda&gt;&lt;/expr&gt;"/>
+                  </Frame.BackgroundColor>
+                </Frame>
+                <Image Grid.Row="0" Grid.Column="1" WidthRequest="24" HeightRequest="24" Opacity="0.3">
+                  <Image.Source>
+                    <Binding Path="Icon"/>
+                  </Image.Source>
+                </Image>
+              </Grid>
+            </Frame>
+          </ViewCell>
+        </DataTemplate>
+      </ListView.ItemTemplate>
+    </ListView>
+  </StackLayout>
+</ContentPage>

@@ -1,0 +1,88 @@
+﻿using AmmyUIExmaple.Converters
+
+$TitleColor = "#ffffff"
+
+ContentPage "AmmyUIExmaple.MainPage" {
+	BackgroundColor: "#7C4DFF"
+	Padding: 18
+
+	StackLayout { 
+		Label { 
+			Text: "Hello, Amy!"
+			TextColor: "White"
+			FontSize: 24
+			FontAttributes: Bold
+		}
+
+		BoxView { 
+			HeightRequest: 1
+			WidthRequest: 200
+			HorizontalOptions: Start
+			BackgroundColor: "#66ffffff"
+		}
+
+		Label { 
+			FormattedText: FormattedString {
+				Spans: [
+					Span {
+						Text: "There are "
+					}
+					Span {
+						Text: "4"
+						FontAttributes: Bold
+						FontSize: resource "IssuesFontSize"
+					}
+					Span {
+						Text: " issues awaiting your action."
+					}
+				]
+			}
+			TextColor: White
+		}
+
+		ListView { 
+			RowHeight: 70
+			ItemsSource: bind ListItems
+			SeparatorVisibility: None
+			ItemTemplate: DataTemplate {
+				ViewCell { 
+					Frame { 
+						BackgroundColor: "#33eeeeee"
+						CornerRadius: 10
+						HasShadow: "False"
+						Padding: 10
+						Margin: "0, 10"
+
+						Grid {
+							#TwoColumns("*", 24)
+							Label { 
+								#Cell(0, 0)
+								Text: bind Title
+								TextColor: $TitleColor
+								FontSize: 16
+							}
+							Frame { 
+								WidthRequest: 50
+								HeightRequest: 4
+								Padding: 0
+								HasShadow: "False"
+								CornerRadius: 2
+								VerticalOptions: End
+								HorizontalOptions: Start
+								BackgroundColor: bind Category convert (EntryCategory category) => EntryCategoryToColorConverter.Convert(category)
+							}
+							Image { 
+								#Cell(0, 1)
+								Source: bind Icon
+								WidthRequest: 24
+								HeightRequest: 24
+								Opacity: 0.3
+							}
+						}
+					}
+				}
+			}
+		}
+		
+	}
+}
