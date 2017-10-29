@@ -1,0 +1,1 @@
+Example app in Xamarin.Forms showing AmmyUI - a new json based UI language that is an alternative for XAML and supports live coding (changes from Visual Studio are visible immediately in the app in emulator or device).
